@@ -1,0 +1,23 @@
+{
+  "name": "go-raiding",
+   "private": true,
+    "workspaces": ["apps/*", "packages/*"],
+  
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:web": "npm run dev -w @go-raiding/web",
+    "dev:api": "npm run dev -w @go-raiding/api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlisaPagan/go-raiding.git"
+  },
+  "keywords": [],
+  "author": "Alisa Pagan <alisapodgaynaya023@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/AlisaPagan/go-raiding/issues"
+  },
+  "homepage": "https://github.com/AlisaPagan/go-raiding#readme"
+}

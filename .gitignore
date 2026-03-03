@@ -1,0 +1,14 @@
+# dependencies
+node_modules
+
+# env
+.env
+.env.*
+
+# build artifacts
+dist
+.next
+
+# OS junk
+.DS_Store
+Thumbs.db
