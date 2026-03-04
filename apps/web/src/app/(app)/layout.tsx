@@ -1,4 +1,4 @@
-export default function PublicLayout({
+export default function AppLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -6,11 +6,11 @@ export default function PublicLayout({
   return (
     <>
       <header>
-        <h1>This is placeholder header in public routes</h1>
+        <h1>This is placeholder header in app routes</h1>
       </header>
       <main>{children}</main>
       <footer>
-        <h2>This is placeholder footer in public routes</h2>
+        <h2>Footer represents nav panel</h2>
       </footer>
     </>
   );
