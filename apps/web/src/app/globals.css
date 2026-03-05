@@ -19,8 +19,11 @@
   --section-vertical-padding: 60px;
 
   --pad-page-x: 25px;
+  --pad-items-y: 18px;
   --btn-py: 14px;
   --btn-px: 40px;
+  --btn-md-py: 12px;
+  --btn-md-px: 20px;
   --btn-sm-py: 5px;
   --btn-sm-px: 35px;
   --btn-border-radius: 50px;
@@ -28,6 +31,19 @@
   --gap-sm: 10px;
   --gap-md: 15px;
   --gap-lg: 28px;
+
+  --heading-lg: 32px;
+  --heading-md: 24px;
+  --heading-sm: 16px;
+  --body-lg: 20px;
+  --body-md: 18px;
+  --body-sm: 16px;
+  --btn-text: 18px;
+  --btn-text-sm: 16px;
+
+  --border-radius-sm: 10px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 16px;
 }
 * {
   box-sizing: border-box;
@@ -44,23 +60,28 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-cabin), Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: var(--body-md);
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: var(--font-montserrat), Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 24px;
+  font-size: var(--heading-md);
+}
+
+h3 {
+  font-family: var(--font-montserrat), Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: var(--heading-sm);
 }
 
 .section {
-  padding: 60px 0;
+  padding: var(--section-vertical-padding) 0;
 }
 
 a {
@@ -78,7 +99,7 @@ ol {
 button {
   cursor: pointer;
   font-family: var(--font-montserrat);
-  font-size: 18px;
+  font-size: var(--btn-text);
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -98,9 +119,16 @@ img {
 /* ======== Styles for Mobile devices ======== */
 .container {
   width: 100%;
-  max-width: 410px;
+  max-width: 412px;
   margin: 0 auto;
   padding: 0 var(--pad-page-x);
+}
+
+/* ======== Styles for Small Mobile devices ======== */
+@media only screen and (min-width: 0px) and (max-width: 320px) {
+  .container {
+    max-width: 320px;
+  }
 }
 
 /* ======== Styles for Tablet devices ======== */

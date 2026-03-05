@@ -2,10 +2,10 @@
   border-radius: var(--btn-border-radius);
   color: var(--foreground);
   font-family: var(--font-montserrat);
-  font-size: 18px;
+  font-size: var(--btn-text-lg);
   font-weight: 600;
   text-align: center;
-  padding: var(--btn-py) var(--btn-px);
+  padding: var(--btn-py);
   width: 312px;
   display: flex;
   align-items: center;
@@ -32,6 +32,8 @@
   color: var(--foreground);
 }
 
-.btn_half {
-  width: 50%;
+@media screen and (min-width: 0px) and (max-width: 364px) {
+  .button {
+    width: 100%;
+  }
 }
