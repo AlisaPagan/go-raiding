@@ -1,0 +1,26 @@
+.header {
+  width: 100%;
+  margin-top: var(--section-vertical-padding);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: block;
+}
+
+.login {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--button);
+}
+
+.login:hover {
+  color: var(--foreground);
+  text-decoration: underline;
+}

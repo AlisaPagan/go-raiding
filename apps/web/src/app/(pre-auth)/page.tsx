@@ -1,38 +1,57 @@
-import styles from "../../components/UI/Button/Button.module.css";
+import ButtonStyles from "../../components/UI/Button/Button.module.css";
 import Link from "next/link";
+import PageStyles from "./LandingPage.module.css";
 
 export default function PublicHome() {
   return (
-    <main style={{ padding: 24 }}>
-      <h1>Organize World of Warcraft raids without chaos</h1>
-      <p>Apply, approve, manage: all in one place.</p>
+    <main className="container">
+      <section className="section">
+        <h1>Organize World of Warcraft raids without chaos</h1>
+        <p>Apply, approve, manage: all in one place.</p>
 
-      <Link href="/signup" className={`${styles.button} ${styles.primary}`}>
-        Sign up
-      </Link>
+        <Link
+          href="/signup"
+          className={`${ButtonStyles.button} ${ButtonStyles.primary} ${ButtonStyles.btn_half}`}
+        >
+          Sign up
+        </Link>
 
-      <Link href="/raids" className={`${styles.button} ${styles.secondary}`}>
-        Browse raids
-      </Link>
+        <Link
+          href="/raids"
+          className={`${ButtonStyles.button} ${ButtonStyles.secondary} ${ButtonStyles.btn_half}`}
+        >
+          Browse raids
+        </Link>
+      </section>
 
-      <ul>
-        <li>Approval-based raids</li>
-        <li>Character & ilvl validation</li>
-        <li>Clear raid management</li>
-      </ul>
+      <section>
+        <ul>
+          <li>Approval-based raids</li>
+          <li>Character & ilvl validation</li>
+          <li>Clear raid management</li>
+        </ul>
+      </section>
 
-      <ul>
-        <li>No ads, no spam</li>
-        <li>Your information never shared</li>
-      </ul>
+      <section>
+        <ul>
+          <li>No ads, no spam</li>
+          <li>Your information never shared</li>
+        </ul>
 
-      <Link href="/signup" className={`${styles.button} ${styles.primary}`}>
-        Sign up
-      </Link>
+        <Link
+          href="/signup"
+          className={`${ButtonStyles.button} ${ButtonStyles.primary} ${ButtonStyles.btn_half}`}
+        >
+          Sign up
+        </Link>
 
-      <Link href="/raids" className={`${styles.button} ${styles.secondary}`}>
-        Browse raids
-      </Link>
+        <Link
+          href="/raids"
+          className={`${ButtonStyles.button} ${ButtonStyles.secondary} ${ButtonStyles.btn_half}`}
+        >
+          Browse raids
+        </Link>
+      </section>
     </main>
   );
 }

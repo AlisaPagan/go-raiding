@@ -1,35 +1,66 @@
 @import "modern-normalize/modern-normalize.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: #111322;
+  --foreground: #ffffff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --accent-warning: #deb86f;
+  --button: #709edf;
+  --button-hover: #3a48bf;
+  --accent-success: #79de6f;
+  --accent-success-hover: #4b7965;
+  --red-danger: #d20603;
+  --red-danger-hover: #9f0200;
+  --muted-blue: #939ca9;
+  --light-grey-blue: #c8d1df;
+  --dark-grey: #212934;
+
+  --bottom-nav-height: 76px;
+  --section-vertical-padding: 60px;
+
+  --pad-page-x: 25px;
+  --btn-py: 14px;
+  --btn-px: 40px;
+  --btn-sm-py: 5px;
+  --btn-sm-px: 35px;
+  --btn-border-radius: 50px;
+
+  --gap-sm: 10px;
+  --gap-md: 15px;
+  --gap-lg: 28px;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-cabin), Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+h1,
+h2,
+h3 {
+  font-family: var(--font-montserrat), Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.section {
+  padding: 60px 0;
 }
 
 a {
@@ -37,8 +68,51 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-montserrat);
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ======== Styles for Mobile devices ======== */
+.container {
+  width: 100%;
+  max-width: 410px;
+  margin: 0 auto;
+  padding: 0 var(--pad-page-x);
+}
+
+/* ======== Styles for Tablet devices ======== */
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+/* ======== Styles for Desktop devices ======== */
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
   }
 }

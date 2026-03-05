@@ -1,17 +1,37 @@
 .button {
-  border-radius: 50px;
-  color: #ffffff;
+  border-radius: var(--btn-border-radius);
+  color: var(--foreground);
+  font-family: var(--font-montserrat);
+  font-size: 18px;
+  font-weight: 600;
   text-align: center;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding: var(--btn-py) var(--btn-px);
+  width: 312px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .primary {
-  background-color: #709edf;
+  background-color: var(--button);
   border: none;
+}
+
+.primary:hover {
+  background-color: var(--button-hover);
 }
 
 .secondary {
   background-color: transparent;
-  border: 1px solid #709edf;
+  border: 2px solid var(--button);
+  color: var(--button);
+}
+
+.secondary:hover {
+  border: 2px solid var(--button-hover);
+  color: var(--foreground);
+}
+
+.btn_half {
+  width: 50%;
 }

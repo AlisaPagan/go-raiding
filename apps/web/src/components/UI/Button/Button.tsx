@@ -1,5 +1,6 @@
 import styles from "./Button.module.css";
 import type { ButtonProps } from "./buttonPropsType";
+
 function Button({
   children,
   variant = "primary",
