@@ -9,18 +9,13 @@
   justify-content: space-between;
 }
 
-.logo {
-  display: block;
-}
-
 .login {
-  display: block;
+  display: inline-block;
   font-family: var(--font-montserrat);
   font-size: 20px;
   font-weight: 600;
   color: var(--button);
   position: relative;
-  display: inline-block;
   transition: color 0.3s ease-in-out;
 }
 
@@ -44,4 +39,11 @@
 
 .login:hover::after {
   transform: scaleX(1);
+}
+
+@media only screen and (max-width: 320px) {
+  .navigation {
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
 }

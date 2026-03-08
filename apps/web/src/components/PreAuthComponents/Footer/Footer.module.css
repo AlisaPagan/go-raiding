@@ -1,0 +1,33 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--gap-md);
+  padding-top: var(--gap-md);
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+.navLink {
+  font-size: 14px;
+  transition: color 0.3s ease-in-out;
+}
+
+.navLink:hover {
+  color: var(--button);
+}
+
+@media screen and (max-width: 364px) {
+  .footer {
+    flex-direction: column;
+    row-gap: var(--gap-md);
+  }
+
+  .navLink {
+    font-size: var(--body-sm);
+  }
+}
