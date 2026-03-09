@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat, Cabin } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
+import { Providers } from "./providers";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -24,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${cabin.variable}`}>{children}</body>
+      <body className={`${montserrat.variable} ${cabin.variable}`}>
+        <Providers>{children}</Providers>
+        <Toaster />
+      </body>
     </html>
   );
 }

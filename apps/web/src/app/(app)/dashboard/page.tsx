@@ -1,6 +1,6 @@
 export default function DashboardPage() {
   return (
-    <main style={{ padding: 24 }}>
+    <main>
       <h1>Dashboard</h1>
     </main>
   );

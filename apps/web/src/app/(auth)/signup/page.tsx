@@ -1,6 +1,6 @@
 export default function SignupPage() {
   return (
-    <main style={{ padding: 24 }}>
+    <main>
       <h1>Sign up</h1>
     </main>
   );

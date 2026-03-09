@@ -1,36 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Go Raiding
 
-## Getting Started
+Go Raiding — вебзастосунок для створення, перегляду та керування рейдами у World of Warcraft.
 
-First, run the development server:
+## Поточний стек
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Frontend
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- CSS Modules + globals.css
+- Axios
+- TanStack React Query
+- React Hot Toast
+- Zustand
+- Formik
+- Yup
+
+## Структура проєкту
+
+```txt
+go-raiding/
+├─ apps/
+│  └─ web/
+│     ├─ src/
+│     │  ├─ app/
+│     │  ├─ components/
+│     │  ├─ services/
+│     │  └─ lib/
+│     ├─ public/
+│     └─ package.json
+├─ packages/
+└─ package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Що вже реалізовано
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- базова структура monorepo
+- Next.js App Router
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+route groups:
 
-## Learn More
+- (pre-auth)
+- (auth)
+- (app)
+- landing page
+- header / footer
 
-To learn more about Next.js, take a look at the following resources:
+базові UI елементи:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Button
+- Divider
+- Icon
+- SVG sprite для іконок
+- Axios instance
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+API services:
 
-## Deploy on Vercel
+- auth.api.ts
+- raids.api.ts
+- characters.api.ts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+глобальний обробник API-помилок через toast
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## React Query Provider
+
+React Query Devtools (тільки в dev)
+
+Як запустити проєкт
+
+1. Встановити залежності
+
+У корені репозиторію:
+npm install
+
+2. Створити env файл
+   Створити файл:
+   apps/web/.env.local
+
+і додати:
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
+
+Якщо backend буде на іншому порті — змінити значення.
+
+3. Запустити frontend
+   npm run dev:web
+
+Після цього застосунок буде доступний за адресою:
+
+http://localhost:3000
+
+Корисні команди
+
+- Запуск web
+  npm run dev:web
+- Лінтер
+  npm run lint -w @go-raiding/web
+- Білд
+  npm run build -w @go-raiding/web
+
+Важливі технічні правила
+API
+
+- У компонентах не використовуємо fetch()
+- У компонентах не викликаємо axios напряму
+- Усі запити йдуть тільки через src/services/\*
+
+React Query
+
+- Усі серверні дані бажано тягнути через React Query
+- Devtools підключені тільки в dev режимі
+
+UI
+
+- Глобальні змінні стилів лежать у globals.css
+- Стилі компонентів — через CSS Modules
+- Базові UI-компоненти лежать у components/UI
+
+Іконки
+
+- Іконки зберігаються у SVG sprite
+- Компонент для використання іконок: Icon
+
+Поточний стан Sprint 0
+Вже зроблено:
+
+- setup
+- routing
+- базова навігація
+- landing
+- API layer
+- React Query setup
+
+Ще в роботі:
+
+- modal / bottom sheet
+- confirm section
+- loaders
+- mock data / mock API
+- list behaviors
+- polish / QA
+
+## Нотатки для нових учасників
+
+- Спочатку обов’язково перевірити apps/web/.env.local
+- Не додавати нові HTTP-запити напряму в компоненти
+- Перед створенням нових shared UI-компонентів узгодити структуру
+- Якщо працюєте з інфраструктурою (modal, bottom sheet, list logic) — краще не дублювати роботу паралельно без синку
+
+TODO найближчим часом
+
+- реалізація modal / bottom sheet
+- mock API для UI без backend
+- loading / empty / error states
+- підготовка до Sprint 1

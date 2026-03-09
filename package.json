@@ -22,9 +22,6 @@
     "url": "https://github.com/AlisaPagan/go-raiding/issues"
   },
   "homepage": "https://github.com/AlisaPagan/go-raiding#readme",
-  "dependencies": {
-    "modern-normalize": "^3.0.1"
-  },
   "devDependencies": {
     "prettier": "^3.8.1"
   }
