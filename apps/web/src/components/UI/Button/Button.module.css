@@ -35,3 +35,9 @@
   border: 2px solid var(--button-hover);
   color: var(--foreground);
 }
+
+.reset {
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+}

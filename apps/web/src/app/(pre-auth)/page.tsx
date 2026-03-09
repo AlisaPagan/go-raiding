@@ -1,8 +1,11 @@
+"use client";
+
 import ButtonStyles from "@/components/UI/Button/Button.module.css";
 import Link from "next/link";
 import PageStyles from "./LandingPage.module.css";
 import Divider from "@/components/UI/Divider/Divider";
 import Icon from "@/components/UI/Icon/Icon";
+import Modal from "@/components/UI/Modal/Modal";
 
 export default function PublicHome() {
   return (
@@ -67,6 +70,16 @@ export default function PublicHome() {
             Browse raids
           </Link>
         </div>
+
+        <Modal
+          isOpen={true}
+          title={"Testing title"}
+          onClose={() => {
+            console.log("Closed");
+          }}
+        >
+          Testing modal
+        </Modal>
       </section>
     </main>
   );
