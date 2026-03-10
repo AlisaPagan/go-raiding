@@ -46,8 +46,8 @@ export default function PublicHome() {
             Clear raid management
           </li>
         </ul>
-        <Divider />
       </section>
+      <Divider />
 
       <section className={PageStyles.perks}>
         <h2 className="visHidden">Benefits</h2>
@@ -70,17 +70,28 @@ export default function PublicHome() {
             Browse raids
           </Link>
         </div>
-
-        <Modal
-          isOpen={true}
-          title={"Testing title"}
-          onClose={() => {
-            console.log("Closed");
-          }}
-        >
-          Testing modal
-        </Modal>
       </section>
+      <Modal
+        isOpen={true}
+        title={"Testing title"}
+        onClose={() => {
+          console.log("Closed");
+        }}
+      >
+        <p>
+          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
+          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting
+        </p>
+        <Divider />
+        <p>
+          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
+          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting
+        </p>
+      </Modal>
     </main>
   );
 }

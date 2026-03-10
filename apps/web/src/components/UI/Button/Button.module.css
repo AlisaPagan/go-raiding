@@ -39,5 +39,9 @@
 .reset {
   background-color: transparent;
   border: none;
-  width: fit-content;
+  width: auto;
+  padding: 0;
+  min-width: 0;
+  width: auto;
+  height: auto;
 }

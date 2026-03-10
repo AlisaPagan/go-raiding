@@ -15,8 +15,8 @@ const Header = () => {
             Log in
           </Link>
         </nav>
-        <Divider />
       </div>
+      <Divider />
     </header>
   );
 };
