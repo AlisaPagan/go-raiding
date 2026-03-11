@@ -1,7 +1,7 @@
-export type ModalProps = {
+export type ModalBottomSheetProps = {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   title?: string;
-  footer?: React.ReactNode;
+  bottomPanel?: React.ReactNode;
 };

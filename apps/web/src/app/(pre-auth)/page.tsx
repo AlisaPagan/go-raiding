@@ -5,7 +5,7 @@ import Link from "next/link";
 import PageStyles from "./LandingPage.module.css";
 import Divider from "@/components/UI/Divider/Divider";
 import Icon from "@/components/UI/Icon/Icon";
-import Modal from "@/components/UI/Modal/Modal";
+import Modal from "@/components/UI/ModalBottomSheet/ModalBottomSheet";
 
 export default function PublicHome() {
   return (
@@ -78,6 +78,28 @@ export default function PublicHome() {
           console.log("Closed");
         }}
       >
+        <p>
+          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
+          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting
+        </p>
+        <Divider />
+        <p>
+          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
+          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting
+        </p>
+
+        <Divider />
+        <p>
+          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
+          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
+          modalTesting modalTesting modalTesting modalTesting
+        </p>
+        <Divider />
         <p>
           Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
           Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
