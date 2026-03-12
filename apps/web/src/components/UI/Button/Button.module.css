@@ -44,4 +44,16 @@
   min-width: 0;
   width: auto;
   height: auto;
+  font-size: var(--body-md);
+  font-family: var(--font-cabin);
+  font-weight: 400;
+  color: var(--muted-blue);
+  transition:
+    color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+}
+
+.reset:hover {
+  background-color: transparent;
+  color: var(--button);
 }

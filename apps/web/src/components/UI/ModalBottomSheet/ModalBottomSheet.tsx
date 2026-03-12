@@ -15,26 +15,30 @@ function ModalBottomSheet({
   title,
   bottomPanel,
 }: ModalBottomSheetProps) {
-  if (!isOpen) {
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!isOpen || !mounted) {
     return null;
   }
 
-  const [mounted, setMounted] = useState(false);
   return createPortal(
     <div className={styles.backdrop}>
       <div className={styles.overlay}>
+        <header className={styles.top}>
+          <h2 className={styles.title}>{title}</h2>
+          <Button className={styles.closeButton} onClick={onClose} type="button" variant="reset">
+            <Icon className={styles.closeIcon} name="icon-cross" size={18} />
+          </Button>
+        </header>
+        <Divider />
         <div className={styles.scrollable}>
-          <header className={styles.top}>
-            <h2 className={styles.title}>{title}</h2>
-            <Button className={styles.closeButton} onClick={onClose} type="button" variant="reset">
-              <Icon className={styles.closeIcon} name="icon-cross" size={18} />
-            </Button>
-          </header>
-
-          <Divider />
           <div className={styles.content}>{children}</div>
         </div>
-        <footer className={styles.bottomPanel}>{bottomPanel}</footer>
+        {bottomPanel && <footer className={styles.bottomPanel}>{bottomPanel}</footer>}
       </div>
     </div>,
     document.body,

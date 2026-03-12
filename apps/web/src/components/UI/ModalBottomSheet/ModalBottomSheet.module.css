@@ -54,18 +54,25 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center;
   padding: 0 var(--pad-page-x);
   gap: var(--pad-items-y);
   margin-top: var(--pad-items-y);
-  flex: 1;
+  margin-bottom: var(--gap-lg);
 }
 
 .scrollable {
   overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 }
 
 .bottomPanel {
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+  height: var(--bottom-panel-height);
+  padding: var(--gap-sm) var(--pad-page-x);
+  border-top: 1px solid var(--foreground);
 }
 
 @media screen and (max-width: 364px) {

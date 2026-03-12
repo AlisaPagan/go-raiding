@@ -5,7 +5,8 @@ import Link from "next/link";
 import PageStyles from "./LandingPage.module.css";
 import Divider from "@/components/UI/Divider/Divider";
 import Icon from "@/components/UI/Icon/Icon";
-import Modal from "@/components/UI/ModalBottomSheet/ModalBottomSheet";
+import ModalBottomSheet from "@/components/UI/ModalBottomSheet/ModalBottomSheet";
+import Button from "@/components/UI/Button/Button";
 
 export default function PublicHome() {
   return (
@@ -71,9 +72,27 @@ export default function PublicHome() {
           </Link>
         </div>
       </section>
-      <Modal
+      <ModalBottomSheet
         isOpen={true}
         title={"Testing title"}
+        bottomPanel={
+          <>
+            <div className={PageStyles.bottomPanelCtaWrapper}>
+              <Button
+                type="reset"
+                className={`${ButtonStyles.button} ${ButtonStyles.reset} ${PageStyles.btnClear}`}
+              >
+                Clear selection
+              </Button>
+              <Button
+                type="button"
+                className={`${ButtonStyles.button} ${ButtonStyles.primary} ${PageStyles.btnRequest}`}
+              >
+                Request to join
+              </Button>
+            </div>
+          </>
+        }
         onClose={() => {
           console.log("Closed");
         }}
@@ -113,7 +132,7 @@ export default function PublicHome() {
           modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
           modalTesting modalTesting modalTesting modalTesting
         </p>
-      </Modal>
+      </ModalBottomSheet>
     </main>
   );
 }
