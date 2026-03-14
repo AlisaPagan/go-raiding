@@ -1,0 +1,14 @@
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  padding: 12px;
+  border-radius: 10px;
+  background: #1f2636;
+}
+
+.button {
+  margin-top: 16px;
+}
