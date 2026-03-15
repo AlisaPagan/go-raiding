@@ -24,16 +24,6 @@
   margin-top: var(--gap-lg);
 }
 
-.showMoreButton {
-  min-width: 312px;
-  padding: var(--btn-py) var(--btn-px);
-  border: 1px solid var(--button);
-  border-radius: var(--btn-border-radius);
-  background: transparent;
-  color: var(--button);
-}
-
-.showMoreButton:hover {
-  background: var(--button);
-  color: var(--foreground);
+.buttonWrapper button {
+  width: 312px;
 }

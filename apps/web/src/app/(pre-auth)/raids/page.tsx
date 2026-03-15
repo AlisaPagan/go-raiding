@@ -5,6 +5,7 @@ import { useInfiniteQueryHelper } from "@/lib/hooks/useInfiniteQueryHelper";
 import { getRaids } from "@/services/raids.api";
 
 import styles from "./raids.module.css";
+import Button from "@/components/UI/Button/Button";
 
 export default function RaidsPage() {
   const { data, fetchNextPage, hasNextPage } = useInfiniteQueryHelper({
@@ -32,9 +33,9 @@ export default function RaidsPage() {
         </ul>
 
         <div className={styles.buttonWrapper}>
-          <button className={styles.showMoreButton} onClick={handleShowMore}>
+          <Button variant="secondary" onClick={handleShowMore}>
             Show more
-          </button>
+          </Button>
         </div>
       </div>
     </main>
