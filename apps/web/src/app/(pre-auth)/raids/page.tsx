@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useInfiniteQueryHelper } from "@/lib/useInfiniteQueryHelper";
+import { useInfiniteQueryHelper } from "@/lib/hooks/useInfiniteQueryHelper";
 import { getRaids } from "@/services/raids.api";
 
 import styles from "./raids.module.css";
