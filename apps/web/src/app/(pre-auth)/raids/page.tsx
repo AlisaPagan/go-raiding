@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useInfiniteQueryHelper } from "@/lib/useInfiniteQueryHelper";
 import { getRaids } from "@/services/raids.api";
 
-import styles from "./page.module.css";
+import styles from "./raids.module.css";
 
 export default function RaidsPage() {
   const { data, fetchNextPage, hasNextPage } = useInfiniteQueryHelper({
@@ -19,20 +19,24 @@ export default function RaidsPage() {
   };
 
   return (
-    <main style={{ padding: 24 }}>
-      <h1>Raids</h1>
+    <main className={styles.page}>
+      <div className="container">
+        <h1 className={styles.title}>Raids</h1>
 
-      <ul className={styles.list}>
-        {items.map((item) => (
-          <li key={item} className={styles.item}>
-            {item}
-          </li>
-        ))}
-      </ul>
+        <ul className={styles.list}>
+          {items.map((item) => (
+            <li key={item} className={styles.item}>
+              {item}
+            </li>
+          ))}
+        </ul>
 
-      <button className={styles.button} onClick={handleShowMore}>
-        Show more
-      </button>
+        <div className={styles.buttonWrapper}>
+          <button className={styles.showMoreButton} onClick={handleShowMore}>
+            Show more
+          </button>
+        </div>
+      </div>
     </main>
   );
 }
