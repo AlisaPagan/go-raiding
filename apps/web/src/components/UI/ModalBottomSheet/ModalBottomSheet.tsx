@@ -6,7 +6,7 @@ import Icon from "../Icon/Icon";
 import styles from "./ModalBottomSheet.module.css";
 import type { ModalBottomSheetProps } from "./modalBottomSheetTypes";
 import { createPortal } from "react-dom";
-import { useEffect, useState } from "react";
+import { ReactEventHandler, useEffect, useState } from "react";
 
 function ModalBottomSheet({
   isOpen,
@@ -15,14 +15,26 @@ function ModalBottomSheet({
   title,
   bottomPanel,
 }: ModalBottomSheetProps) {
+  // mount component
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // close on backdrop
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
     }
   };
 
+  const [shouldRender, setShouldRender] = useState<boolean>(isOpen);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  // close on escape
   useEffect(() => {
-    if (!isOpen) {
+    if (!shouldRender) {
       return;
     }
 
@@ -37,16 +49,46 @@ function ModalBottomSheet({
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [shouldRender, onClose]);
 
-  const [mounted, setMounted] = useState<boolean>(false);
-
+  // lock scroll
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    if (!shouldRender) {
+      return;
+    }
 
-  const [shouldRender, setShouldRender] = useState<boolean>(isOpen);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [shouldRender]);
+
+  // entry&exit animation
+  useEffect(() => {
+    let animationFrameId: number | undefined;
+    if (isOpen) {
+      setShouldRender(true);
+      animationFrameId = requestAnimationFrame(() => setIsVisible(true));
+    } else {
+      setIsVisible(false);
+    }
+    return () => {
+      if (animationFrameId !== undefined) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [isOpen]);
+
+  function handleTransitionEnd(event: React.TransitionEvent<HTMLDivElement>) {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+    if (!isVisible) {
+      setShouldRender(false);
+    }
+  }
 
   if (!shouldRender || !mounted) {
     return null;
@@ -54,7 +96,7 @@ function ModalBottomSheet({
 
   return createPortal(
     <div className={styles.backdrop} onClick={handleBackdropClick}>
-      <div className={styles.overlay}>
+      <div className={styles.overlay} onTransitionEnd={handleTransitionEnd}>
         <header className={styles.top}>
           <h2 className={styles.title}>{title}</h2>
           <Button className={styles.closeButton} onClick={onClose} type="button" variant="reset">
