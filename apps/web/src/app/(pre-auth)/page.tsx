@@ -7,8 +7,14 @@ import Divider from "@/components/UI/Divider/Divider";
 import Icon from "@/components/UI/Icon/Icon";
 import ModalBottomSheet from "@/components/UI/ModalBottomSheet/ModalBottomSheet";
 import Button from "@/components/UI/Button/Button";
+import { useState } from "react";
 
 export default function PublicHome() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <main className={`${PageStyles.pageWrapper} container`}>
       <section className={PageStyles.hero}>
@@ -71,9 +77,10 @@ export default function PublicHome() {
             Browse raids
           </Link>
         </div>
+        <Button onClick={openModal}>Test open modal</Button>
       </section>
       <ModalBottomSheet
-        isOpen={true}
+        isOpen={isModalOpen}
         title={"Testing title"}
         bottomPanel={
           <>
@@ -93,9 +100,7 @@ export default function PublicHome() {
             </div>
           </>
         }
-        onClose={() => {
-          console.log("Closed");
-        }}
+        onClose={closeModal}
       >
         <p>
           Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal

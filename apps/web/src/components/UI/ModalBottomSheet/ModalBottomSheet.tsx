@@ -15,18 +15,45 @@ function ModalBottomSheet({
   title,
   bottomPanel,
 }: ModalBottomSheetProps) {
+  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!isOpen || !mounted) {
+  const [shouldRender, setShouldRender] = useState<boolean>(isOpen);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  if (!shouldRender || !mounted) {
     return null;
   }
 
   return createPortal(
-    <div className={styles.backdrop}>
+    <div className={styles.backdrop} onClick={handleBackdropClick}>
       <div className={styles.overlay}>
         <header className={styles.top}>
           <h2 className={styles.title}>{title}</h2>
