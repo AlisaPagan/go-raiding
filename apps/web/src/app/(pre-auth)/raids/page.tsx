@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useInfiniteQueryHelper } from "@/lib/hooks/useInfiniteQueryHelper";
+import { useInfiniteQueryHelper } from "@/lib/query/useInfiniteQueryHelper";
 import { getRaids } from "@/services/raids.api";
 
 import styles from "./raids.module.css";
@@ -12,10 +12,10 @@ export default function RaidsPage() {
     queryKey: ["raids"],
     queryFn: getRaids,
   });
-  const [items, setItems] = useState(Array.from({ length: 10 }, (_, i) => `Raid ${i + 1}`));
+  const [items, setItems] = useState(Array.from({ length: 4 }, (_, i) => `Raid ${i + 1}`));
 
   const handleShowMore = () => {
-    const next = Array.from({ length: 10 }, (_, i) => `Raid ${items.length + i + 1}`);
+    const next = Array.from({ length: 4 }, (_, i) => `Raid ${items.length + i + 1}`);
     setItems([...items, ...next]);
   };
 
