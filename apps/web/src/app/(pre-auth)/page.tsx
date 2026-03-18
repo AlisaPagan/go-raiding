@@ -28,7 +28,6 @@ export default function PublicHome() {
         </div>
         <Divider />
       </section>
-
       <section className={PageStyles.features}>
         <h2 className="visHidden">Features</h2>
         <ul className={PageStyles.featList}>
@@ -47,7 +46,6 @@ export default function PublicHome() {
         </ul>
       </section>
       <Divider />
-
       <section className={PageStyles.perks}>
         <h2 className="visHidden">Benefits</h2>
         <ul className={PageStyles.perksList}>
