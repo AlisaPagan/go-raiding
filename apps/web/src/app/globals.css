@@ -44,6 +44,10 @@
   --border-radius-sm: 10px;
   --border-radius-md: 14px;
   --border-radius-lg: 16px;
+
+  --bottom-panel-height: 76px;
+
+  --easing-for-anims: cubic-bezier(0.075, 0.3, 0.165, 1);
 }
 * {
   box-sizing: border-box;

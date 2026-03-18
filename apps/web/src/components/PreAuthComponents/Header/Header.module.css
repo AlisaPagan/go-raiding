@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: var(--gap-lg);
 }
 
 .login {
@@ -16,7 +17,7 @@
   font-weight: 600;
   color: var(--button);
   position: relative;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s var(--easing-for-anims);
 }
 
 .login::after {
@@ -27,10 +28,9 @@
   width: 100%;
   height: 1px;
   background: currentColor;
-
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s var(--easing-for-anims);
 }
 
 .login:hover {

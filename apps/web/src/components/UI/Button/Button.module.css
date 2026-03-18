@@ -15,7 +15,7 @@
 .primary {
   background-color: var(--button);
   border: none;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s var(--easing-for-anims);
 }
 
 .primary:hover {
@@ -27,11 +27,33 @@
   border: 2px solid var(--button);
   color: var(--button);
   transition:
-    color 0.3s ease-in-out,
-    border-color 0.3s ease-in-out;
+    color 0.3s var(--easing-for-anims),
+    border-color 0.3s var(--easing-for-anims);
 }
 
 .secondary:hover {
   border: 2px solid var(--button-hover);
+  color: var(--foreground);
+}
+
+.reset {
+  background-color: transparent;
+  border: none;
+  width: auto;
+  padding: 0;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  font-size: var(--body-md);
+  font-family: var(--font-cabin);
+  font-weight: 400;
+  color: var(--muted-blue);
+  transition:
+    color 0.3s var(--easing-for-anims),
+    background-color 0.3s var(--easing-for-anims);
+}
+
+.reset:hover {
+  background-color: transparent;
   color: var(--foreground);
 }

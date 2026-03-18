@@ -1,0 +1,105 @@
+.backdrop {
+  background-color: rgba(255, 255, 255, 20%);
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  inset: 0;
+  transition: opacity 0.3s var(--easing-for-anims);
+}
+
+.backdropVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.backdropHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay {
+  position: relative;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  height: 95%;
+  transition: transform 0.4s var(--easing-for-anims);
+}
+
+.overlayVisible {
+  transform: translateY(0);
+}
+
+.overlayHidden {
+  transform: translateY(100%);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 50px;
+  position: relative;
+}
+.closeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  position: absolute;
+  top: 35%;
+  right: 25px;
+}
+.closeIcon {
+  fill: var(--foreground);
+  transition: fill 0.3s ease-in-out;
+}
+
+.closeButton:hover .closeIcon {
+  fill: var(--button);
+}
+
+.title {
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 var(--pad-page-x);
+  gap: var(--pad-items-y);
+  margin-top: var(--pad-items-y);
+  margin-bottom: var(--gap-lg);
+}
+
+.scrollable {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.bottomPanel {
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+  height: var(--bottom-panel-height);
+  padding: var(--gap-sm) var(--pad-page-x);
+  border-top: 1px solid var(--foreground);
+}
+
+@media screen and (max-width: 364px) {
+  .closeIcon {
+    height: 15px;
+    width: 15px;
+  }
+
+  .title {
+    font-size: var(--heading-md);
+  }
+}

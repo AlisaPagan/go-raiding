@@ -14,7 +14,7 @@
 
 .navLink {
   font-size: 14px;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s var(--easing-for-anims);
 }
 
 .navLink:hover {
