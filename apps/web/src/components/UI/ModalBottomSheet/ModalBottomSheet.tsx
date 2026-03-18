@@ -6,7 +6,7 @@ import Icon from "../Icon/Icon";
 import styles from "./ModalBottomSheet.module.css";
 import type { ModalBottomSheetProps } from "./modalBottomSheetTypes";
 import { createPortal } from "react-dom";
-import { ReactEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function ModalBottomSheet({
   isOpen,
@@ -67,19 +67,24 @@ function ModalBottomSheet({
 
   // entry&exit animation
   useEffect(() => {
-    let animationFrameId: number | undefined;
     if (isOpen) {
       setShouldRender(true);
-      animationFrameId = requestAnimationFrame(() => setIsVisible(true));
     } else {
       setIsVisible(false);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    let animationFrameId: number | undefined;
+    if (shouldRender) {
+      animationFrameId = requestAnimationFrame(() => setIsVisible(true));
     }
     return () => {
       if (animationFrameId !== undefined) {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [isOpen]);
+  }, [shouldRender]);
 
   function handleTransitionEnd(event: React.TransitionEvent<HTMLDivElement>) {
     if (event.target !== event.currentTarget) {
@@ -95,8 +100,14 @@ function ModalBottomSheet({
   }
 
   return createPortal(
-    <div className={styles.backdrop} onClick={handleBackdropClick}>
-      <div className={styles.overlay} onTransitionEnd={handleTransitionEnd}>
+    <div
+      className={`${styles.backdrop} ${isVisible ? styles.backdropVisible : styles.backdropHidden}`}
+      onClick={handleBackdropClick}
+    >
+      <div
+        className={`${styles.overlay} ${isVisible ? styles.overlayVisible : styles.overlayHidden}`}
+        onTransitionEnd={handleTransitionEnd}
+      >
         <header className={styles.top}>
           <h2 className={styles.title}>{title}</h2>
           <Button className={styles.closeButton} onClick={onClose} type="button" variant="reset">

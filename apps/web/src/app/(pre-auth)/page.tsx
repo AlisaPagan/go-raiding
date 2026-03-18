@@ -5,16 +5,8 @@ import Link from "next/link";
 import PageStyles from "./LandingPage.module.css";
 import Divider from "@/components/UI/Divider/Divider";
 import Icon from "@/components/UI/Icon/Icon";
-import ModalBottomSheet from "@/components/UI/ModalBottomSheet/ModalBottomSheet";
-import Button from "@/components/UI/Button/Button";
-import { useState } from "react";
 
 export default function PublicHome() {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
   return (
     <main className={`${PageStyles.pageWrapper} container`}>
       <section className={PageStyles.hero}>
@@ -77,67 +69,7 @@ export default function PublicHome() {
             Browse raids
           </Link>
         </div>
-        <Button onClick={openModal}>Test open modal</Button>
       </section>
-      <ModalBottomSheet
-        isOpen={isModalOpen}
-        title={"Testing title"}
-        bottomPanel={
-          <>
-            <div className={PageStyles.bottomPanelCtaWrapper}>
-              <Button
-                type="reset"
-                className={`${ButtonStyles.button} ${ButtonStyles.reset} ${PageStyles.btnClear}`}
-              >
-                Clear selection
-              </Button>
-              <Button
-                type="button"
-                className={`${ButtonStyles.button} ${ButtonStyles.primary} ${PageStyles.btnRequest}`}
-              >
-                Request to join
-              </Button>
-            </div>
-          </>
-        }
-        onClose={closeModal}
-      >
-        <p>
-          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
-          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting
-        </p>
-        <Divider />
-        <p>
-          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
-          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting
-        </p>
-
-        <Divider />
-        <p>
-          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
-          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting
-        </p>
-        <Divider />
-        <p>
-          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
-          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting
-        </p>
-        <Divider />
-        <p>
-          Testing modal Testing modal Testing modal Testing modal Testing modal Testing modal
-          Testing modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting modalTesting
-          modalTesting modalTesting modalTesting modalTesting
-        </p>
-      </ModalBottomSheet>
     </main>
   );
 }
