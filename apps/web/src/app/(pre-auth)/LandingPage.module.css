@@ -109,4 +109,12 @@
   .listItemFeat {
     font-size: var(--body-md);
   }
+
+  .featList {
+    gap: var(--gap-md);
+  }
+
+  .featureIcon {
+    margin-right: var(--gap-lg);
+  }
 }

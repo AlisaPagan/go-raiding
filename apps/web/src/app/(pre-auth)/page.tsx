@@ -1,3 +1,5 @@
+"use client";
+
 import ButtonStyles from "@/components/UI/Button/Button.module.css";
 import Link from "next/link";
 import PageStyles from "./LandingPage.module.css";
@@ -26,7 +28,6 @@ export default function PublicHome() {
         </div>
         <Divider />
       </section>
-
       <section className={PageStyles.features}>
         <h2 className="visHidden">Features</h2>
         <ul className={PageStyles.featList}>
@@ -43,9 +44,8 @@ export default function PublicHome() {
             Clear raid management
           </li>
         </ul>
-        <Divider />
       </section>
-
+      <Divider />
       <section className={PageStyles.perks}>
         <h2 className="visHidden">Benefits</h2>
         <ul className={PageStyles.perksList}>
