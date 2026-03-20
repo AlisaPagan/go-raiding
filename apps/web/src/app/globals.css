@@ -14,6 +14,7 @@
   --muted-blue: #939ca9;
   --light-grey-blue: #c8d1df;
   --dark-grey: #212934;
+  --input-disabled: #414750;
 
   --bottom-nav-height: 76px;
   --section-vertical-padding: 60px;
@@ -27,6 +28,7 @@
   --btn-sm-py: 5px;
   --btn-sm-px: 35px;
   --btn-border-radius: 50px;
+  --input-pad: 15px;
 
   --gap-sm: 10px;
   --gap-md: 15px;
