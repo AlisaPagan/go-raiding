@@ -1,0 +1,40 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.label {
+  font-size: var(--body-sm);
+}
+
+.input {
+  background-color: transparent;
+  border: 1px solid var(--muted-blue);
+  border-radius: var(--border-radius-md);
+  padding: var(--input-pad);
+}
+
+.input::placeholder {
+  color: var(--muted-blue);
+}
+
+.input:focus,
+.input:hover,
+.input:active {
+  outline: none;
+  border: 1px solid var(--button);
+}
+.errorText {
+  font-size: var(--heading-sm);
+  color: var(--red-danger);
+}
+
+.inputErrorState {
+  border: 1px solid var(--red-danger);
+}
+
+.inputDisabled {
+  border: 1px solid var(--input-disabled);
+  cursor: not-allowed;
+}
