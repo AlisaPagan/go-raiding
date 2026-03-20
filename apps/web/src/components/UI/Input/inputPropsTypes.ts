@@ -5,4 +5,8 @@ export type InputProps = {
   error?: string;
   type: "text" | "password" | "email";
   disabled?: boolean;
+  name: string;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onBlur: React.FocusEventHandler<HTMLInputElement>;
 };
