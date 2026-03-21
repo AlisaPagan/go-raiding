@@ -1,0 +1,46 @@
+import type { Raid } from '../types';
+
+export const raids: Raid[] = [
+    {
+        id: 'r1',
+        instanceId: 'amirdrassil',
+        instanceName: 'Amirdrassil',
+        difficulty: 'heroic',
+        startsAt: '2026-03-22T19:00:00Z',
+        region: 'EU',
+        minItemLevel: 475,
+        visibility: 'public',
+        description: 'Chill heroic run, curve-oriented group.',
+        discordLink: 'https://discord.gg/example1',
+        slots: {
+            tanksTotal: 2,
+            healersTotal: 4,
+            dpsTotal: 14,
+        },
+        leaderUserId: 'u1',
+        status: 'open',
+        createdAt: '2026-03-20T10:00:00Z',
+        updatedAt: '2026-03-20T10:00:00Z',
+    },
+    {
+        id: 'r2',
+        instanceId: 'nerubar-palace',
+        instanceName: 'Nerub-ar Palace',
+        difficulty: 'mythic',
+        startsAt: '2026-03-24T20:30:00Z',
+        region: 'EU',
+        minItemLevel: 490,
+        visibility: 'private-link',
+        description: 'Semi-static mythic progress run.',
+        discordLink: 'https://discord.gg/example2',
+        slots: {
+            tanksTotal: 2,
+            healersTotal: 4,
+            dpsTotal: 14,
+        },
+        leaderUserId: 'u2',
+        status: 'open',
+        createdAt: '2026-03-19T18:30:00Z',
+        updatedAt: '2026-03-20T08:45:00Z',
+    },
+];

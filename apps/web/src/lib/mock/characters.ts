@@ -1,0 +1,43 @@
+import type { Character } from '../types';
+
+export const characters: Character[] = [
+    {
+        id: 'c1',
+        userId: 'u1',
+        name: 'Aeloria',
+        realm: 'silvermoon',
+        class: 'priest',
+        spec: 'holy',
+        roleHint: 'healer',
+        itemLevel: 485,
+        avatarUrl: '/avatars/char-1.png',
+        region: 'EU',
+        isMain: true,
+    },
+    {
+        id: 'c2',
+        userId: 'u1',
+        name: 'Velkris',
+        realm: 'draenor',
+        class: 'mage',
+        spec: 'fire',
+        roleHint: 'dps',
+        itemLevel: 478,
+        avatarUrl: '/avatars/char-2.png',
+        region: 'EU',
+        isMain: false,
+    },
+    {
+        id: 'c3',
+        userId: 'u2',
+        name: 'Thorgar',
+        realm: 'twisting-nether',
+        class: 'warrior',
+        spec: 'protection',
+        roleHint: 'tank',
+        itemLevel: 490,
+        avatarUrl: '/avatars/char-3.png',
+        region: 'EU',
+        isMain: true,
+    },
+];
