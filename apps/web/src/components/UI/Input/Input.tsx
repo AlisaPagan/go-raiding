@@ -1,4 +1,4 @@
-import { InputProps } from "./inputPropsTypes";
+import type { InputProps } from "./inputPropsTypes";
 import styles from "./Input.module.css";
 
 function Input({
@@ -12,14 +12,20 @@ function Input({
   value,
   onChange,
   onBlur,
+  inputClassName,
 }: InputProps) {
   return (
     <div className={styles.inputWrapper}>
-      <label htmlFor={id} className={styles.label}>
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={id} className={styles.label}>
+          {label}
+        </label>
+      )}
       <input
-        className={`${styles.input} ${disabled ? styles.inputDisabled : ""} ${error ? styles.inputErrorState : ""} `}
+        className={`${styles.input} 
+        ${disabled ? styles.inputDisabled : ""} 
+        ${error ? styles.inputErrorState : ""} 
+        ${inputClassName || ""}`}
         id={id}
         name={name}
         type={type}

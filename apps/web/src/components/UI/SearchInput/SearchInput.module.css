@@ -1,0 +1,16 @@
+.searchInputWrapper {
+  position: relative;
+}
+
+.searchInput {
+  padding-left: 50px;
+}
+
+.searchIcon {
+  position: absolute;
+  fill: var(--muted-blue);
+  top: 50%;
+  left: var(--input-pad);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
