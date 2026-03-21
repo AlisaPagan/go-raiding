@@ -1,42 +1,47 @@
 "use client";
 
-import { useState } from "react";
 import { useInfiniteQueryHelper } from "@/lib/query/useInfiniteQueryHelper";
-import { getRaids } from "@/services/raids.api";
+import { getRaidsPage } from "@/services/mockApi";
 
 import styles from "./raids.module.css";
 import Button from "@/components/UI/Button/Button";
 
 export default function RaidsPage() {
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQueryHelper({
-    queryKey: ["raids"],
-    queryFn: getRaids,
-  });
-  const [items, setItems] = useState(Array.from({ length: 4 }, (_, i) => `Raid ${i + 1}`));
+  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
+    useInfiniteQueryHelper({
+      queryKey: ["raids"],
+      queryFn: getRaidsPage,
+    });
+
+  const raids = data?.pages.flat() ?? [];
 
   const handleShowMore = () => {
-    const next = Array.from({ length: 4 }, (_, i) => `Raid ${items.length + i + 1}`);
-    setItems([...items, ...next]);
+    fetchNextPage();
   };
-
   return (
     <main className={styles.page}>
       <div className="container">
         <h1 className={styles.title}>Raids</h1>
 
-        <ul className={styles.list}>
-          {items.map((item) => (
-            <li key={item} className={styles.item}>
-              {item}
-            </li>
-          ))}
-        </ul>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <ul className={styles.list}>
+            {raids.map((raid) => (
+              <li key={raid.id} className={styles.item}>
+                {raid.instanceName}
+              </li>
+            ))}
+          </ul>
+        )}
 
-        <div className={styles.buttonWrapper}>
-          <Button variant="secondary" onClick={handleShowMore}>
-            Show more
-          </Button>
-        </div>
+        {hasNextPage && !isLoading && (
+          <div className={styles.buttonWrapper}>
+            <Button variant="secondary" onClick={handleShowMore} disabled={isFetchingNextPage}>
+              {isFetchingNextPage ? "Loading..." : "Show more"}
+            </Button>
+          </div>
+        )}
       </div>
     </main>
   );

@@ -51,16 +51,23 @@ export type Raid = {
     id: string;
     instanceId: string;
     instanceName: string;
-    difficulty: RaidDifficulty;
+    difficulty: "normal" | "heroic" | "mythic";
     startsAt: string;
-    region: Region;
+    region: string;
     minItemLevel: number;
-    visibility: RaidVisibility;
+    visibility: "public" | "private_link";
     description: string;
     discordLink?: string;
-    slots: RaidSlots;
+
+    slots: {
+        tanksTotal: number;
+        healersTotal: number;
+        dpsTotal: number;
+    };
+
     leaderUserId: string;
-    status: RaidStatus;
+    status: "open" | "full" | "cancelled" | "completed";
+
     createdAt: string;
     updatedAt: string;
 };

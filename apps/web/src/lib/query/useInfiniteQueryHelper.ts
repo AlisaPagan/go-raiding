@@ -13,6 +13,9 @@ export function useInfiniteQueryHelper<T>({
         queryKey,
         initialPageParam: 1,
         queryFn: ({ pageParam }) => queryFn({ pageParam: pageParam as number }),
-        getNextPageParam: (_lastPage, pages) => pages.length + 1,
+        getNextPageParam: (lastPage, pages) => {
+            if (lastPage.length === 0) return undefined;
+            return pages.length + 1;
+        },
     });
 }
