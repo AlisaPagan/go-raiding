@@ -6,6 +6,10 @@ import { getRaidsPage } from "@/services/mockApi";
 import styles from "./raids.module.css";
 import Button from "@/components/UI/Button/Button";
 
+import Loader, { LoaderBtn } from "@/components/UI/Loader/Loader";
+import SearchInput from "@/components/UI/SearchInput/SearchInput";
+import Divider from "@/components/UI/Divider/Divider";
+
 export default function RaidsPage() {
   const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
     useInfiniteQueryHelper({
@@ -20,11 +24,22 @@ export default function RaidsPage() {
   };
   return (
     <main className={styles.page}>
-      <div className="container">
+      <div className={`"container" ${styles.pageWrapper}`}>
         <h1 className={styles.title}>Raids</h1>
+        <SearchInput
+          id="search"
+          name="search"
+          placeholder="Find raids..."
+          value=""
+          onChange={() => {}}
+          onBlur={() => {}}
+        />
+        <Divider />
 
         {isLoading ? (
-          <p>Loading...</p>
+          <div className={styles.loaderPage}>
+            <Loader />
+          </div>
         ) : (
           <ul className={styles.list}>
             {raids.map((raid) => (
@@ -38,7 +53,14 @@ export default function RaidsPage() {
         {hasNextPage && !isLoading && (
           <div className={styles.buttonWrapper}>
             <Button variant="secondary" onClick={handleShowMore} disabled={isFetchingNextPage}>
-              {isFetchingNextPage ? "Loading..." : "Show more"}
+              {isFetchingNextPage ? (
+                <div className={styles.loaderBtn}>
+                  <span>Loading...</span>
+                  <LoaderBtn />
+                </div>
+              ) : (
+                "Show more"
+              )}
             </Button>
           </div>
         )}

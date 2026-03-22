@@ -1,5 +1,11 @@
 .page {
-  padding: var(--section-vertical-padding) 0;
+  padding: var(--section-vertical-padding) var(--pad-page-x);
+}
+
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
 }
 
 .title {
@@ -26,4 +32,22 @@
 
 .buttonWrapper button {
   width: 312px;
+}
+
+.loaderPage {
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background);
+  opacity: 90%;
+  position: fixed;
+}
+
+.loaderBtn {
+  display: flex;
+  gap: var(--gap-md);
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
