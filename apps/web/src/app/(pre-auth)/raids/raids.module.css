@@ -1,0 +1,53 @@
+.page {
+  padding: var(--section-vertical-padding) var(--pad-page-x);
+}
+
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+}
+
+.title {
+  margin-bottom: var(--gap-lg);
+}
+
+.list {
+  display: grid;
+  gap: var(--gap-md);
+}
+
+.item {
+  padding: var(--pad-items-y);
+  background: var(--dark-grey);
+  border-radius: var(--border-radius-md);
+  color: var(--foreground);
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--gap-lg);
+}
+
+.buttonWrapper button {
+  width: 312px;
+}
+
+.loaderPage {
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background);
+  opacity: 90%;
+  position: fixed;
+}
+
+.loaderBtn {
+  display: flex;
+  gap: var(--gap-md);
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
