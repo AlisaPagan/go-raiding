@@ -4,7 +4,7 @@ import Input from "@/components/UI/Input/Input";
 
 export default function LoginPage() {
   return (
-    <main>
+    <main style={{ padding: 25 }}>
       <Input
         id="test"
         name="test"
