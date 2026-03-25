@@ -48,27 +48,38 @@ function Select({
       )}
       <button
         type="button"
-        className={styles.selectControl}
+        className={`${styles.selectControl} 
+        ${error ? styles.selectErrorState : ""} 
+        ${disabled ? styles.selectDisabled : ""}`}
         onClick={handleToggle}
         disabled={disabled}
         id={id}
         name={name}
       >
         <span>{selectedOption?.label || placeholder}</span>
-        <Icon name="icon-chevron-vert" size={15} className={styles.dropdownIcon} />
+        <Icon
+          name="icon-chevron-vert"
+          size={15}
+          className={`${styles.dropdownIcon} 
+          ${isOpen ? styles.iconRotated : ""} 
+          ${error ? styles.dropdownIconErrState : ""}
+          ${disabled ? styles.dropdownIconDisabledState : ""}`}
+        />
       </button>
       {isOpen && (
         <div className={styles.optionsList}>
           {options.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => handleOptionSelect(option)}
-              type="button"
-              disabled={option.disabled}
-              className={styles.option}
-            >
-              {option.label}
-            </button>
+            <div key={option.value} className={styles.optionWrapper}>
+              <button
+                onClick={() => handleOptionSelect(option)}
+                type="button"
+                disabled={option.disabled}
+                className={`${styles.option} 
+                ${option.disabled ? styles.optionDisabled : ""}`}
+              >
+                {option.label}
+              </button>
+            </div>
           ))}
         </div>
       )}

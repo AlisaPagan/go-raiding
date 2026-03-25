@@ -3,7 +3,10 @@
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
-  gap: var(--gap-md);
+}
+
+.label {
+  margin-bottom: var(--gap-sm);
 }
 
 .selectControl {
@@ -16,14 +19,78 @@
   border-radius: var(--border-radius-md);
   padding: var(--input-pad);
   color: var(--foreground);
+  font-family: var(--body-md);
   font-weight: 400;
+  margin-bottom: 5px;
+
+  transition:
+    color 0.3s var(--easing-for-anims),
+    border-color 0.3s var(--easing-for-anims);
+}
+
+.selectControl:hover,
+.selectControl:focus-visible {
+  outline: none;
+  color: var(--button);
+  border-color: var(--button);
 }
 
 .dropdownIcon {
   fill: var(--foreground);
+  transition: transform 0.3s var(--easing-for-anims);
+}
+
+.selectControl:hover .dropdownIcon,
+.selectControl:focus-visible .dropdownIcon {
+  fill: var(--button);
+}
+.iconRotated {
+  transform: rotate(180deg);
+}
+
+.dropdownIconErrState {
+  fill: var(--red-danger);
+}
+
+.selectControl:hover .dropdownIconErrState,
+.selectControl:focus .dropdownIconErrState {
+  fill: var(--red-danger);
 }
 
 .errorText {
+  font-size: var(--heading-sm);
+  color: var(--red-danger);
+}
+
+.selectErrorState {
+  border: 1px solid var(--red-danger);
+  color: var(--red-danger);
+}
+.selectErrorState:hover,
+.selectErrorState:focus {
+  border: 1px solid var(--red-danger);
+  color: var(--red-danger);
+}
+
+.selectDisabled {
+  color: var(--input-disabled);
+  border: 1px solid var(--input-disabled);
+  cursor: not-allowed;
+}
+
+.selectDisabled:hover,
+.selectDisabled:focus {
+  color: var(--input-disabled);
+  border: 1px solid var(--input-disabled);
+}
+
+.dropdownIconDisabledState {
+  fill: var(--input-disabled);
+}
+
+.selectControl:hover .dropdownIconDisabledState,
+.selectControl:focus .dropdownIconDisabledState {
+  fill: var(--input-disabled);
 }
 
 .option {
@@ -32,16 +99,24 @@
   border: none;
   font-weight: 400;
   width: 100%;
-  padding: var(--pad-sm) 0;
   justify-content: start;
+  padding: 0 var(--pad-items-y);
+  transition: color 0.3s var(--easing-for-anims);
 }
-.option:first-child {
+.option:hover {
+  color: var(--button);
+}
+
+.optionWrapper {
+  padding: var(--pad-sm) 0;
+}
+.optionWrapper:first-child {
   padding-top: 0;
 }
-.option:last-child {
+.optionWrapper:last-child {
   padding-bottom: 0;
 }
-.option:not(:last-child) {
+.optionWrapper:not(:last-child) {
   border-bottom: 1px solid var(--muted-blue);
 }
 .optionsList {
@@ -51,4 +126,13 @@
   width: 100%;
   border-radius: var(--border-radius-lg);
   padding: var(--pad-items-y) 0;
+}
+
+.optionDisabled {
+  color: var(--muted-blue);
+}
+
+.optionDisabled:hover,
+.optionDisabled:focus {
+  color: var(--muted-blue);
 }

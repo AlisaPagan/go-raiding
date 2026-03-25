@@ -13,6 +13,7 @@
   border: 1px solid var(--muted-blue);
   border-radius: var(--border-radius-md);
   padding: var(--input-pad);
+  transition: border-color 0.3 var(--easing-for-anims);
 }
 
 .input::placeholder {
@@ -23,7 +24,7 @@
 .input:hover,
 .input:active {
   outline: none;
-  border: 1px solid var(--button);
+  border-color: var(--button);
 }
 .errorText {
   font-size: var(--heading-sm);
@@ -37,4 +38,9 @@
 .inputDisabled {
   border: 1px solid var(--input-disabled);
   cursor: not-allowed;
+}
+
+.inputDisabled:hover,
+.inputDisabled:focus {
+  border: 1px solid var(--input-disabled);
 }

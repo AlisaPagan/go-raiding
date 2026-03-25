@@ -16,10 +16,12 @@
 .primary {
   background-color: var(--button);
   border: none;
-  transition: background-color 0.3s var(--easing-for-anims);
+  transition: background-color 0.3 var(--easing-for-anims);
 }
 
-.primary:hover {
+.primary:hover,
+.primary:focus {
+  outline: none;
   background-color: var(--button-hover);
 }
 
@@ -32,7 +34,9 @@
     border-color 0.3s var(--easing-for-anims);
 }
 
-.secondary:hover {
+.secondary:hover,
+.secondary:focus {
+  outline: none;
   border: 2px solid var(--button-hover);
   color: var(--foreground);
 }
@@ -54,7 +58,9 @@
     background-color 0.3s var(--easing-for-anims);
 }
 
-.reset:hover {
+.reset:hover,
+.reset:focus {
+  outline: none;
   background-color: transparent;
   color: var(--foreground);
 }
