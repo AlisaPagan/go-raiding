@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
+  position: relative;
 }
 
 .label {
@@ -22,7 +23,6 @@
   font-family: var(--body-md);
   font-weight: 400;
   margin-bottom: 5px;
-
   transition:
     color 0.3s var(--easing-for-anims),
     border-color 0.3s var(--easing-for-anims);
@@ -37,7 +37,9 @@
 
 .dropdownIcon {
   fill: var(--foreground);
-  transition: transform 0.3s var(--easing-for-anims);
+  transition:
+    transform 0.3s var(--easing-for-anims),
+    fill 0.3s var(--easing-for-anims);
 }
 
 .selectControl:hover .dropdownIcon,
@@ -53,7 +55,7 @@
 }
 
 .selectControl:hover .dropdownIconErrState,
-.selectControl:focus .dropdownIconErrState {
+.selectControl:focus-visible .dropdownIconErrState {
   fill: var(--red-danger);
 }
 
@@ -67,7 +69,7 @@
   color: var(--red-danger);
 }
 .selectErrorState:hover,
-.selectErrorState:focus {
+.selectErrorState:focus-visible {
   border: 1px solid var(--red-danger);
   color: var(--red-danger);
 }
@@ -79,7 +81,7 @@
 }
 
 .selectDisabled:hover,
-.selectDisabled:focus {
+.selectDisabled:focus-visible {
   color: var(--input-disabled);
   border: 1px solid var(--input-disabled);
 }
@@ -89,7 +91,7 @@
 }
 
 .selectControl:hover .dropdownIconDisabledState,
-.selectControl:focus .dropdownIconDisabledState {
+.selectControl:focus-visible .dropdownIconDisabledState {
   fill: var(--input-disabled);
 }
 
@@ -99,11 +101,12 @@
   border: none;
   font-weight: 400;
   width: 100%;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 0 var(--pad-items-y);
   transition: color 0.3s var(--easing-for-anims);
 }
-.option:hover {
+.option:hover,
+.option:focus-visible {
   color: var(--button);
 }
 
@@ -126,6 +129,29 @@
   width: 100%;
   border-radius: var(--border-radius-lg);
   padding: var(--pad-items-y) 0;
+
+  transform-origin: top;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  z-index: 9998;
+}
+
+.optionsListOpen {
+  transform: translateY(0);
+  opacity: 1;
+  transition:
+    transform 0.4s var(--easing-for-anims),
+    opacity 0.3s var(--easing-for-anims);
+}
+
+.optionsListClosed {
+  transform: translateY(-50px);
+  opacity: 0;
+  transition:
+    transform 0.4s var(--easing-for-anims),
+    opacity 0.4s var(--easing-for-anims) 0.06s;
+  pointer-events: none;
 }
 
 .optionDisabled {
@@ -133,6 +159,6 @@
 }
 
 .optionDisabled:hover,
-.optionDisabled:focus {
+.optionDisabled:focus-visible {
   color: var(--muted-blue);
 }

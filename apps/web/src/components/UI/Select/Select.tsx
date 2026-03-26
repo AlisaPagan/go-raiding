@@ -1,7 +1,7 @@
 import Icon from "../Icon/Icon";
 import styles from "./Select.module.css";
 import type { SelectOption, SelectProps } from "./SelectPropsTypes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Select({
   id,
@@ -14,6 +14,9 @@ function Select({
   disabled,
   error,
 }: SelectProps) {
+  const [isListVisible, setIsListVisible] = useState<boolean>(false);
+  const [shouldListRender, setShouldListRender] = useState<boolean>(false);
+
   //select closed
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -27,16 +30,52 @@ function Select({
     if (disabled) {
       return;
     }
-    setIsOpen((prev) => !prev);
+
+    if (!isOpen) {
+      setIsOpen(true);
+      setShouldListRender(true);
+    } else {
+      setIsOpen(false);
+      setIsListVisible(false);
+    }
   }
 
   //select an option
   function handleOptionSelect(selectedOption: SelectOption) {
     if (selectedOption.disabled) {
       return;
+    } else {
+      onChange(selectedOption.value);
+      setIsOpen(false);
+      setIsListVisible(false);
     }
-    onChange(selectedOption.value);
-    setIsOpen(false);
+  }
+
+  //option list animation
+  useEffect(() => {
+    let animationFrameId: number | undefined;
+
+    if (!shouldListRender) {
+      return;
+    } else {
+      animationFrameId = requestAnimationFrame(() => setIsListVisible(true));
+    }
+
+    return () => {
+      if (animationFrameId !== undefined) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [shouldListRender]);
+
+  function handleTransitionEnd(event: React.TransitionEvent<HTMLDivElement>) {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    if (!isListVisible) {
+      setShouldListRender(false);
+    }
   }
 
   return (
@@ -46,6 +85,7 @@ function Select({
           {label}
         </label>
       )}
+
       <button
         type="button"
         className={`${styles.selectControl} 
@@ -55,6 +95,8 @@ function Select({
         disabled={disabled}
         id={id}
         name={name}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
       >
         <span>{selectedOption?.label || placeholder}</span>
         <Icon
@@ -66,8 +108,14 @@ function Select({
           ${disabled ? styles.dropdownIconDisabledState : ""}`}
         />
       </button>
-      {isOpen && (
-        <div className={styles.optionsList}>
+
+      {shouldListRender && (
+        <div
+          className={`${styles.optionsList} 
+        ${isListVisible ? styles.optionsListOpen : styles.optionsListClosed}`}
+          onTransitionEnd={handleTransitionEnd}
+          role="listbox"
+        >
           {options.map((option) => (
             <div key={option.value} className={styles.optionWrapper}>
               <button
@@ -76,6 +124,8 @@ function Select({
                 disabled={option.disabled}
                 className={`${styles.option} 
                 ${option.disabled ? styles.optionDisabled : ""}`}
+                role="option"
+                aria-selected={option.value === value}
               >
                 {option.label}
               </button>
@@ -83,6 +133,7 @@ function Select({
           ))}
         </div>
       )}
+
       {error && <p className={styles.errorText}>{error}</p>}
     </div>
   );
