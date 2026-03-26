@@ -1,0 +1,164 @@
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.label {
+  margin-bottom: var(--gap-sm);
+}
+
+.selectControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--muted-blue);
+  border-radius: var(--border-radius-md);
+  padding: var(--input-pad);
+  color: var(--foreground);
+  font-family: var(--body-md);
+  font-weight: 400;
+  margin-bottom: 5px;
+  transition:
+    color 0.3s var(--easing-for-anims),
+    border-color 0.3s var(--easing-for-anims);
+}
+
+.selectControl:hover,
+.selectControl:focus-visible {
+  outline: none;
+  color: var(--button);
+  border-color: var(--button);
+}
+
+.dropdownIcon {
+  fill: var(--foreground);
+  transition:
+    transform 0.3s var(--easing-for-anims),
+    fill 0.3s var(--easing-for-anims);
+}
+
+.selectControl:hover .dropdownIcon,
+.selectControl:focus-visible .dropdownIcon {
+  fill: var(--button);
+}
+.iconRotated {
+  transform: rotate(180deg);
+}
+
+.dropdownIconErrState {
+  fill: var(--red-danger);
+}
+
+.selectControl:hover .dropdownIconErrState,
+.selectControl:focus-visible .dropdownIconErrState {
+  fill: var(--red-danger);
+}
+
+.errorText {
+  font-size: var(--heading-sm);
+  color: var(--red-danger);
+}
+
+.selectErrorState {
+  border: 1px solid var(--red-danger);
+  color: var(--red-danger);
+}
+.selectErrorState:hover,
+.selectErrorState:focus-visible {
+  border: 1px solid var(--red-danger);
+  color: var(--red-danger);
+}
+
+.selectDisabled {
+  color: var(--input-disabled);
+  border: 1px solid var(--input-disabled);
+  cursor: not-allowed;
+}
+
+.selectDisabled:hover,
+.selectDisabled:focus-visible {
+  color: var(--input-disabled);
+  border: 1px solid var(--input-disabled);
+}
+
+.dropdownIconDisabledState {
+  fill: var(--input-disabled);
+}
+
+.selectControl:hover .dropdownIconDisabledState,
+.selectControl:focus-visible .dropdownIconDisabledState {
+  fill: var(--input-disabled);
+}
+
+.option {
+  background-color: transparent;
+  color: var(--foreground);
+  border: none;
+  font-weight: 400;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0 var(--pad-items-y);
+  transition: color 0.3s var(--easing-for-anims);
+}
+.option:hover,
+.option:focus-visible {
+  color: var(--button);
+}
+
+.optionWrapper {
+  padding: var(--pad-sm) 0;
+}
+.optionWrapper:first-child {
+  padding-top: 0;
+}
+.optionWrapper:last-child {
+  padding-bottom: 0;
+}
+.optionWrapper:not(:last-child) {
+  border-bottom: 1px solid var(--muted-blue);
+}
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dark-grey);
+  width: 100%;
+  border-radius: var(--border-radius-lg);
+  padding: var(--pad-items-y) 0;
+
+  transform-origin: top;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  z-index: 9998;
+}
+
+.optionsListOpen {
+  transform: translateY(0);
+  opacity: 1;
+  transition:
+    transform 0.4s var(--easing-for-anims),
+    opacity 0.3s var(--easing-for-anims);
+}
+
+.optionsListClosed {
+  transform: translateY(-50px);
+  opacity: 0;
+  transition:
+    transform 0.4s var(--easing-for-anims),
+    opacity 0.4s var(--easing-for-anims) 0.06s;
+  pointer-events: none;
+}
+
+.optionDisabled {
+  color: var(--muted-blue);
+}
+
+.optionDisabled:hover,
+.optionDisabled:focus-visible {
+  color: var(--muted-blue);
+}

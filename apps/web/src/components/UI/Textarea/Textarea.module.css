@@ -1,0 +1,52 @@
+.textareaWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.label {
+  font-size: var(--body-sm);
+}
+
+.textarea {
+  background-color: transparent;
+  border: 1px solid var(--muted-blue);
+  border-radius: var(--border-radius-md);
+  padding: var(--input-pad);
+}
+
+.textarea::placeholder {
+  color: var(--muted-blue);
+}
+
+.textarea:focus,
+.textarea:hover,
+.textarea:active {
+  outline: none;
+  border: 1px solid var(--button);
+}
+
+.textareaDisabled {
+  border: 1px solid var(--input-disabled);
+  cursor: not-allowed;
+}
+
+.textareaDisabled:hover,
+.textareaDisabled:focus,
+.textareaDisabled:active {
+  border: 1px solid var(--input-disabled);
+}
+
+.errorText {
+  font-size: var(--heading-sm);
+  color: var(--red-danger);
+}
+
+.textareaError {
+  border: 1px solid var(--red-danger);
+}
+
+.textareaError:hover,
+.textareaError:focus {
+  border: 1px solid var(--red-danger);
+}
