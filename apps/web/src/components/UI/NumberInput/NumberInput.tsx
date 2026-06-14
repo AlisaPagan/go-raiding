@@ -7,7 +7,7 @@ function NumberInput({
   name,
   label,
   value,
-  min,
+  min = 0,
   max,
   step = 1, // якщо step не передали, використовуємо 1
   disabled = false,

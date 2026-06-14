@@ -32,7 +32,7 @@
 }
 
 .stepperIcon {
-  fill: var(--foreground);
+  fill: currentColor;
 }
 
 .numberInput {
@@ -66,4 +66,14 @@
 
 .stepperErrorState {
   border-color: var(--red-danger);
+}
+
+.stepperDisabled .stepperButton {
+  color: var(--muted-blue);
+  cursor: not-allowed;
+}
+
+.stepperDisabled .numberInput {
+  color: var(--muted-blue);
+  cursor: not-allowed;
 }
