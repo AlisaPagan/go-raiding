@@ -29,6 +29,7 @@ export default function LoginPage() {
         label="test number"
         value={numberValue}
         onChange={setNumberValue}
+        disabled={false}
       />
     </main>
   );

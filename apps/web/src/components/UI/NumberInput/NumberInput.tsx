@@ -8,13 +8,16 @@ function NumberInput({
   label,
   value,
   min = 0,
-  max,
+  max = 999,
   step = 1, // якщо step не передали, використовуємо 1
   disabled = false,
   error,
   onChange,
   onBlur,
 }: NumberInputProps) {
+  const isMinusDisabled = disabled || value <= min;
+  const isPlusDisabled = disabled || value >= max;
+
   // Зменшуємо значення при натисканні "-"
   function handleMinus() {
     const nextValue = value - step;
@@ -57,14 +60,15 @@ function NumberInput({
       <div
         className={`${styles.stepper}
         ${error ? styles.stepperErrorState : ""}
-        ${disabled ? styles.stepperDisabled : ""}`}
+        ${disabled ? styles.stepperDisabled : ""}
+        `}
       >
         {/* Кнопка мінус */}
         <button
           type="button"
-          className={styles.stepperButton}
+          className={`${styles.stepperButton} ${isMinusDisabled ? styles.stepperButtonDisabled : ""}`}
           onClick={handleMinus}
-          disabled={disabled}
+          disabled={isMinusDisabled}
         >
           <Icon name="icon-minus" size={15} className={styles.stepperIcon} />
         </button>
@@ -87,9 +91,9 @@ function NumberInput({
         {/* Кнопка плюс */}
         <button
           type="button"
-          className={styles.stepperButton}
+          className={`${styles.stepperButton} ${isPlusDisabled ? styles.stepperButtonDisabled : ""}`}
           onClick={handlePlus}
-          disabled={disabled}
+          disabled={isPlusDisabled}
         >
           <Icon name="icon-plus" size={15} className={styles.stepperIcon} />
         </button>
