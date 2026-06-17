@@ -23,7 +23,7 @@ function NumberInput({
     const nextValue = value - step;
 
     // Не даємо піти нижче мінімального значення
-    if (min !== undefined && nextValue < min) {
+    if (nextValue < min) {
       return;
     }
 
@@ -35,7 +35,7 @@ function NumberInput({
     const nextValue = value + step;
 
     // Не даємо перевищити максимальне значення
-    if (max !== undefined && nextValue > max) {
+    if (nextValue > max) {
       return;
     }
 
@@ -44,8 +44,28 @@ function NumberInput({
 
   // Обробка ручного вводу числа
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    onChange(Number(event.target.value));
+    const userInputValue = event.target.value;
+    if (userInputValue === "") {
+      onChange(0);
+      return;
+    }
+
+    if (!/^\d+$/.test(userInputValue)) {
+      return;
+    }
+
+    const numericUserInputValue = Number(userInputValue);
+
+    if (numericUserInputValue > max) {
+      onChange(max);
+      return;
+    }
+    onChange(numericUserInputValue);
   }
+
+  // format value for input
+
+  const displayValue = value === 0 ? "" : String(value);
 
   return (
     <div className={styles.numberInputWrapper}>
@@ -77,11 +97,9 @@ function NumberInput({
         <input
           id={id}
           name={name}
-          type="number"
-          value={value}
-          min={min}
-          max={max}
-          step={step}
+          type="text"
+          inputMode="numeric"
+          value={displayValue}
           disabled={disabled}
           onChange={handleInputChange}
           onBlur={onBlur}
